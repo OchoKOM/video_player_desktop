@@ -240,7 +240,7 @@ videoPlayer.innerHTML = `${videoPlayer.innerHTML}
       </span>
       Qualité
     </div>
-    <ul>video_player_desktop
+    <ul>
   </ul>
   </div>
   <div class="drop" id="captions-drop">
