@@ -102,7 +102,9 @@ videoPlayer.innerHTML = `${videoPlayer.innerHTML}
         </div>
     </div>
 </div>
-<div class="loader"></div> 
+<svg class="loader" viewBox="25 25 50 50" stroke-width="5">
+  <circle cx="50" cy="50" r="20" />
+</svg>
 
 <div class="settings">
 <div class="wrapper">
