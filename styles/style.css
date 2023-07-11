@@ -559,41 +559,54 @@ mark{
     border: 2px solid #f5f5f5;
     color: #f5f5f5 !important;
 }
+
 /* todo: Spinner styling */
-.video_player .loader{
+.video_player .loader {
+    --uib-size: 100px;
+    --uib-speed: 2s;
+    --uib-color: #2a73fe;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 70px;
-    height: 70px;
-    z-index: 20;
-    font-size: 35px;
-    text-align: center;
-    border: 7px solid var(--color);
-    border-bottom: 5px solid transparent;
-    border-top: 5px solid transparent;
-    border-radius: 50%;
-    animation: animate 1s linear infinite;
-    pointer-events: none;
+    top: calc(50% - (var(--uib-size) / 2));
+    left: calc(50% - (var(--uib-size) / 2));
+    height: var(--uib-size);
+    width: var(--uib-size);
+    vertical-align: middle;
+    transform-origin: center;
+    animation: rotate var(--uib-speed) linear infinite;
 }
-@keyframes animate{
-    0%{
-        border-right: 7px solid transparent;
-        border-left: 7px solid var(--color);
-        transform: translate(-50%,-50%) rotate(0deg);
-    }
-    50%{
-        border-right: 7px solid var(--color);
-        border-left: 7px solid transparent;
-        transform: translate(-50%,-50%) rotate(360deg);
-    }
-    100%{
-        border-right: 7px solid transparent;
-        border-left: 7px solid var(--color);
-        transform: translate(-50%,-50%) rotate(720deg);
+
+.video_player .loader circle {
+    fill: none;
+    stroke: var(--uib-color);
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    stroke-width: 3;
+    animation: stretch calc(var(--uib-speed) * 0.75) ease-in-out infinite;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
     }
 }
+
+@keyframes stretch {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+
+    50% {
+        stroke-dasharray: 90, 200;
+        stroke-dashoffset: -35px;
+    }
+
+    100% {
+        stroke-dashoffset: -124px;
+    }
+}
+
 /*? Footer styling */
 footer{
     position: fixed;
